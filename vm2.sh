@@ -28,9 +28,9 @@ address $(echo $APACHE_VLAN_IP | cut -d / -f 1)
 netmask $(echo $APACHE_VLAN_IP | cut -d / -f 2)
 vlan_raw_device $INTERNAL_IF" > /etc/network/interfaces
 
-#ifconfig $INTERNAL_IF $INT_IP
-#vconfig add $INTERNAL_IF $VLAN
-#ifconfig $INTERNAL_IF.$VLAN $VLAN_IP
+ifconfig $INTERNAL_IF $INT_IP
+vconfig add $INTERNAL_IF $VLAN
+ifconfig $INTERNAL_IF.$VLAN $VLAN_IP
 
 apt-get -y install apache2
 rm /etc/apache2/sites-enabled/*
